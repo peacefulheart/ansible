@@ -6,12 +6,12 @@
       - name: update repositories
         yum:
           update_cache: yes
-          changed_when: False
+#          changed_when: False
         when: ansible_distribution == "CentOS"
       - name: update repositories
         apt:
           update_cache: yes
-          changed_when: False
+ #         changed_when: False
         when: ansible_distribution == "Ubuntu"
 
     tasks:
