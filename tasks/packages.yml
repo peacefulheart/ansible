@@ -3,7 +3,7 @@
     name:
       - htop
       - mc
-      - bind-utils
+      - xterm
     state: latest
   when: ansible_distribution == "CentOS"
 - name: Install htop package (Ubuntu)
@@ -11,6 +11,6 @@
     name: 
       - htop
       - mc
-      - dnsutils
+      - xterm
     state: latest
   when: ansible_distribution == "Ubuntu"
