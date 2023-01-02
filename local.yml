@@ -1,21 +1,18 @@
 ---
-- hosts: localhost
-  connection: local
-  become: true
-  tasks:
-  - name: Install htop package (CentOS)
-    yum:
-      name:
-        - htop
-        - mc
-        - tmux
-      state: latest
-    when: ansible_distribution == "CentOS"
-  - name: Install htop package (Ubuntu)
-    apt:
-      name: 
-        - htop
-        - mc
-        - tmux
-      state: latest
-    when: ansible_distribution == "Ubuntu"
+  - hosts: localhost
+    connection: local
+    become: true
+    pre_tasks:
+      - name: update repositories
+        yum:
+          update_cache: yes
+          changed_when: False
+        when: ansible_distribution == "CentOS"
+      - name: update repositories
+        apt:
+          update_cache: yes
+          changed_when: False
+        when: ansible_distribution == "Ubuntu"
+
+    tasks:
+      - include: tasks/packages.yml

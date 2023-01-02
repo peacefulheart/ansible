@@ -1,0 +1,16 @@
+- name: Install htop package (CentOS)
+  yum:
+    name:
+      - htop
+      - mc
+      - bind-utils
+    state: latest
+  when: ansible_distribution == "CentOS"
+- name: Install htop package (Ubuntu)
+  apt:
+    name: 
+      - htop
+      - mc
+      - dnsutils
+    state: latest
+  when: ansible_distribution == "Ubuntu"
