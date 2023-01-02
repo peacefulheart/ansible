@@ -3,14 +3,19 @@
   connection: local
   become: true
   tasks:
-  - name: install updates (CentOS)
+  - name: Install htop package (CentOS)
     yum:
-      name: htop
+      name:
+        - htop
+        - mc
+        - tmux
       state: latest
     when: ansible_distribution == "CentOS"
- 
-  - name: install updates (Ubuntu)
+  - name: Install htop package (Ubuntu)
     apt:
-      name: htop
+      name: 
+        - htop
+        - mc
+        - tmux
       state: latest
     when: ansible_distribution == "Ubuntu"
